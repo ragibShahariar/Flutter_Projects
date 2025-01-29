@@ -2,6 +2,7 @@ import 'package:bank_daffodil_project/screen/MobileOrCrypto.dart';
 import 'package:bank_daffodil_project/widgets/space.dart';
 import 'package:flutter/material.dart';
 import '../widgets/EndDrawer.dart';
+import '../widgets/Footer.dart';
 import '../widgets/header.dart';
 
 enum MobileBanking { Bkash, Nagad, Upay, Roket }
@@ -50,7 +51,7 @@ class _WithdrawState extends State<Withdraw> {
     return Scaffold(
       appBar: AppBar(),
       endDrawer: EndDrawer(context),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -368,17 +369,7 @@ class _WithdrawState extends State<Withdraw> {
                 ),
               ),
             ),
-            Text(
-              "Helpline: 01749866703",
-              style: TextStyle(fontSize: 15),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              'copyright 2027',
-              style: TextStyle(color: Colors.grey),
-            )
+            Footer()
           ],
         ),
       ),

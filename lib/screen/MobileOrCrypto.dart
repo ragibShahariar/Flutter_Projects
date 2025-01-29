@@ -1,6 +1,7 @@
 import 'package:bank_daffodil_project/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../widgets/Footer.dart';
 import '../widgets/space.dart';
 
 class MobileOrCrypto extends StatefulWidget {
@@ -81,6 +82,7 @@ class _MobileOrCryptoState extends State<MobileOrCrypto> {
                 ),
               ),
             ),
+            Footer(),
           ],
         ),
       ),
