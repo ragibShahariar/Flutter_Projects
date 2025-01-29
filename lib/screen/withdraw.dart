@@ -1,3 +1,4 @@
+import 'package:bank_daffodil_project/screen/MobileOrCrypto.dart';
 import 'package:bank_daffodil_project/widgets/space.dart';
 import 'package:flutter/material.dart';
 import '../widgets/EndDrawer.dart';
@@ -44,6 +45,8 @@ class _WithdrawState extends State<Withdraw> {
 
   @override
   Widget build(BuildContext context) {
+    double currentBalance = 200240;
+
     return Scaffold(
       appBar: AppBar(),
       endDrawer: EndDrawer(context),
@@ -53,7 +56,8 @@ class _WithdrawState extends State<Withdraw> {
           children: [
             header(),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: swm(context, .05), vertical: shm(context, .02)),
+              padding: EdgeInsets.symmetric(
+                  horizontal: swm(context, .05), vertical: shm(context, .02)),
               child: Container(
                 clipBehavior: Clip.hardEdge,
                 height: shm(context, .57),
@@ -102,7 +106,7 @@ class _WithdrawState extends State<Withdraw> {
                                 ),
                               ),
                               child: Text(
-                                "200240 Taka",
+                                "${currentBalance.toString()} Taka",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
@@ -224,7 +228,18 @@ class _WithdrawState extends State<Withdraw> {
                           SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MobileOrCrypto(
+                                        balance: currentBalance,
+                                        statusBool: true,
+                                        hashOrNumber:
+                                            _mobileBankingTextController.text),
+                                  ),
+                                );
+                              },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -318,11 +333,25 @@ class _WithdrawState extends State<Withdraw> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(
+                            height: 8,
+                          ),
                           SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MobileOrCrypto(
+                                      balance: currentBalance,
+                                      statusBool: false,
+                                      hashOrNumber:
+                                          _cryptoWalletsTextController.text,
+                                    ),
+                                  ),
+                                );
+                              },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -339,9 +368,17 @@ class _WithdrawState extends State<Withdraw> {
                 ),
               ),
             ),
-            Text("Helpline: 01749866703",style: TextStyle(fontSize: 15),),
-            SizedBox(height: 8,),
-            Text('copyright 2027',style: TextStyle(color: Colors.grey),)
+            Text(
+              "Helpline: 01749866703",
+              style: TextStyle(fontSize: 15),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              'copyright 2027',
+              style: TextStyle(color: Colors.grey),
+            )
           ],
         ),
       ),
