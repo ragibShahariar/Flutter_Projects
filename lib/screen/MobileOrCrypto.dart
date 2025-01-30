@@ -180,7 +180,7 @@ Widget confirmTransfer(
                       ),
                       child: Center(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
@@ -208,15 +208,14 @@ Widget confirmTransfer(
                   onLongPress: () {
                     if (keyForForm.currentState!.validate()) {
                       //after backend confirmation
-                      toggleAnimation(
-                          true); // Show animation on long press start
+                      toggleAnimation(true);
+                      ScaffoldMessenger.of(ctx).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                              "${balanceController.text} taka transferred successfully."),
+                        ),
+                      ); // Show animation on long press start
                     }
-                    ScaffoldMessenger.of(ctx).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                            "${balanceController.text} taka transferred successfully."),
-                      ),
-                    );
                   },
                   onPressed: () {},
                   child: Text(

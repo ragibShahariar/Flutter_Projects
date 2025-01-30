@@ -9,7 +9,9 @@ import 'package:bank_daffodil_project/widgets/space.dart';
 import 'package:bank_daffodil_project/widgets/header.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  MainScreen({super.key});
+
+  double currentBalance = 200560;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -121,18 +123,20 @@ class _MainScreenState extends State<MainScreen> {
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black12,
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: Offset(
-                                            0, 3), // changes position of shadow
-                                      ),
+                                        color: Colors.black38,
+                                        // Shadow color
+                                        offset: Offset(0, 2),
+                                        // Horizontal & Vertical offset
+                                        blurRadius: 4,
+                                        // Blur effect
+                                        spreadRadius: 0, // Spread of the shadow
+                                      )
                                     ],
                                     color: Color(0xfff2e916),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10))),
                                 child: Text(
-                                  " 200560 taka ",
+                                  " ${widget.currentBalance.toString()} taka ",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
@@ -173,7 +177,7 @@ class _MainScreenState extends State<MainScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Withdraw(),
+                                    builder: (context) => Withdraw(currentBalance: widget.currentBalance),
                                   ),
                                 );
                               },
@@ -188,7 +192,7 @@ class _MainScreenState extends State<MainScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Deposit(),
+                                    builder: (context) => Deposit(currentBalance: widget.currentBalance,),
                                   ),
                                 );
                               },
