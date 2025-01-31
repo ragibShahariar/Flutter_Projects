@@ -4,6 +4,7 @@ import 'package:bank_daffodil_project/screen/Transactions.dart';
 import 'package:bank_daffodil_project/screen/UseCard.dart';
 import 'package:bank_daffodil_project/screen/withdraw.dart';
 import 'package:bank_daffodil_project/widgets/EndDrawer.dart';
+import 'package:bank_daffodil_project/widgets/Footer.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_daffodil_project/widgets/space.dart';
 import 'package:bank_daffodil_project/widgets/header.dart';
@@ -40,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   header(),
                   SizedBox(
-                    height: shm(context, .03),
+                    height: shm(context, .015),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -163,7 +164,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -238,7 +239,8 @@ class _MainScreenState extends State<MainScreen> {
                         ],
                       ),
                       SizedBox(height: 6,),
-                      Image.asset('assets/images/card.png')
+                      Image.asset('assets/images/card.png'),
+                      Footer(),
                     ],
                   ),
                 ),

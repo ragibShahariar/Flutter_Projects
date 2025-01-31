@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:glassmorphism_kit/glassmorphism_kit.dart';
+import 'package:sizer/sizer.dart';
 import '../widgets/EndDrawer.dart';
 import '../widgets/header.dart';
 import '../widgets/space.dart';
@@ -8,15 +10,18 @@ class Deposit extends StatefulWidget {
   Deposit({super.key, required this.currentBalance});
 
   double currentBalance;
+  final String accountNumber = "109786552339784";
 
   @override
   State<Deposit> createState() => _DepositState();
 }
 
 class _DepositState extends State<Deposit> {
-
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _accountNumberController =
+        TextEditingController(text: widget.accountNumber);
+
     return Scaffold(
       appBar: AppBar(),
       endDrawer: EndDrawer(context),
@@ -49,7 +54,7 @@ class _DepositState extends State<Deposit> {
                                   bottomRight: Radius.circular(20))),
                           child: Center(
                             child: Text(
-                              "Withdraw now",
+                              "Deposit now",
                               style: TextStyle(fontSize: 20),
                             ),
                           ),
@@ -62,7 +67,7 @@ class _DepositState extends State<Deposit> {
                               width: 20,
                             ),
                             Text(
-                              "Usable Balance:",
+                              "Current Balance:",
                               style: TextStyle(fontSize: 16),
                             ),
                             Container(
@@ -84,6 +89,66 @@ class _DepositState extends State<Deposit> {
                           ],
                         ),
                       ],
+                    ),
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(3.w),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: _accountNumberController,
+                            readOnly: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                              labelText: "Account Number",
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  Clipboard.setData(ClipboardData(
+                                      text: _accountNumberController.text));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text("Copied to clipboard"),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(Icons.copy),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 2.h,),
+                          Stack(
+                            children: [
+                              Center(
+                                child: Image.asset(
+                                  'assets/images/daffodil_flower.png',
+                                  height: 30.h,
+                                  width: 30.w,
+                                ),
+                              ),
+                              GlassContainer(
+                                alignment: Alignment.center,
+                                width: double.infinity,
+                                height: 25.h,
+                                blurStrengthX: 4,
+                                blurStrengthY: 4,
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text("Bank Transfer"),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

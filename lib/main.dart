@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'MainScreen.dart';
 import 'login_signup/login_signup.dart';
 
@@ -11,42 +12,44 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.white,
-          ),
-          scaffoldBackgroundColor: Colors.white,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              elevation: 3,
-              backgroundColor: Color(0xfff2e916),
-              foregroundColor: Colors.black87,
-              textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+    return Sizer(builder: (context, orientation, screenType){
+      return MaterialApp(
+          theme: ThemeData(
+            appBarTheme: AppBarTheme(
+              backgroundColor: Colors.white,
+            ),
+            scaffoldBackgroundColor: Colors.white,
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                elevation: 3,
+                backgroundColor: Color(0xfff2e916),
+                foregroundColor: Colors.black87,
+                textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            inputDecorationTheme: InputDecorationTheme(
+              filled: true,
+              fillColor: Colors.white,
+              floatingLabelStyle: TextStyle(color: Colors.black54),
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xfff2e916)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black54),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey, width: 2.0),
               ),
             ),
           ),
-          inputDecorationTheme: InputDecorationTheme(
-            filled: true,
-            fillColor: Colors.white,
-            floatingLabelStyle: TextStyle(color: Colors.black54),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xfff2e916)),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black54),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 2.0),
-            ),
-          ),
-        ),
-        debugShowCheckedModeBanner: false,
-        home: Base(
-          LoggedIn: false,
-        ));
+          debugShowCheckedModeBanner: false,
+          home: Base(
+            LoggedIn: false,
+          ));
+    },);
   }
 }
 
