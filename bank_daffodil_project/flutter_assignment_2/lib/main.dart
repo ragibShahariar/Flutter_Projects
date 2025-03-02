@@ -1,6 +1,6 @@
 /*
 Assalamualikum brother Taufiq.
-I am using some code suggestion which was enabled by AI editor
+I am using some code suggestion which was enabled by AI editor (idx) suggestions can not be off.
 "pertialy developed in google project idx" but i did not use promt codding though
 my pc had some issues and my semester mid
 term exam of Daffodil university is running so its difficult to 
