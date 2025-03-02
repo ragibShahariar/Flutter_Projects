@@ -1,7 +1,8 @@
+// ignore: file_names
 import 'dart:convert';
-import 'package:api/model/item.dart';
+import 'package:myapp/Data/models/item.dart';
 import 'package:http/http.dart' as http;
-import 'package:api/utils/urls.dart';
+import 'package:myapp/_Utils/urls.dart';
 
 class ProductController {
   List<Item> products = [];
